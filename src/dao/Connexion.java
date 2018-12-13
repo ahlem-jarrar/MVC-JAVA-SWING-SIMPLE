@@ -9,31 +9,39 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author macbook
  */
 public class Connexion {
+    
+    
     private static Connection connection;
-    private String url = "";
     
-    
-     private Connexion() {
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            connection=DriverManager.getConnection("jdbc:mysql://localhost:8888/gestion_formations","root","root");
+    public static Connection getConnection(){
+        
+        if (connection == null){
+            
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+               
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:8889/gestion_formations","root","root");
+                
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+            
         }
-        catch(SQLException|ClassNotFoundException e){
-            e.printStackTrace();
-        }
+        
+    return connection;
     }
     
-    public static Connection getInstance(){
-       if(connection==null)
-            new Connexion();
+    public static void main(String[] args) {
         
-        return connection;
+      Connexion.getConnection();
     }
     
     
