@@ -6,6 +6,7 @@
 package gestiondesformations;
 
 import controller.LoginController;
+import dao.login.LoginDao;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -32,8 +33,10 @@ public class BaseApplication {
     private static LoginController loginController = null;
     public static void main(String[] args) throws MalformedURLException {
            loginView = new LoginView("Login Page",600,600);
+             System.out.println("test 1");
            loginModel = new LoginModel();
-           loginController = new LoginController(loginView);
+           LoginDao loginDao = new LoginDao(); 
+           loginController = new LoginController(loginView,loginDao);
            loginController.initController();
 //              JWindow window = new JWindow();
 //        window.getContentPane().add(

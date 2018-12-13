@@ -30,6 +30,7 @@ public class LoginView extends CustomJFrame implements CommonCallBack{
         userEmailTextField = new JTextField();
         userPasswordTextFiled = new JTextField();
         loginBtn = new JButton("Log In"); 
+        
         forgotPasswordBtn = new JButton("Forgot password?"); 
         signUpBtn = new JButton("Sign up!");
         container = getContentPane();
@@ -106,11 +107,11 @@ public class LoginView extends CustomJFrame implements CommonCallBack{
 
     @Override
     public void onGetFailed(String message) {
-    JOptionPane.showMessageDialog(this, "Eggs are not supposed to be green.");
+    JOptionPane.showMessageDialog(this, "Veuillez remplir correctement tous les champs");
     }
 
     @Override
     public void onGetError(String error) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    JOptionPane.showMessageDialog(this, "Veuillez remplir correctement tous les champs");
     }
 }

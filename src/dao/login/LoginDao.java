@@ -9,6 +9,7 @@ import dao.Connexion;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import model.UserModel;
 
 /**
@@ -16,15 +17,19 @@ import model.UserModel;
  * @author macbook
  */
 public class LoginDao  implements LoginDaoCallBack{
-     private Connection cn= Connexion.getInstance();
      
     @Override
     public boolean connexion(UserModel user) {
         boolean isValidUser = false;
         try{
-         String sql = "Select * from user where email=?"+user.getEmail()+" password=?"+user.getPassword();
-         ResultSet result = cn.createStatement().executeQuery(sql);
-         isValidUser = result.first();
+          Statement statement = Connexion.getConnection().createStatement();
+
+         String sql = "Select * from user where email="+'"'+user.getEmail()+'"'+" and password="+'"'+user.getPassword()+'"';
+         System.out.println(sql);
+         ResultSet result = statement.executeQuery(sql);
+         if(result.next()) {
+             isValidUser = true;
+            }
         }catch(SQLException e){
             e.printStackTrace();
         }

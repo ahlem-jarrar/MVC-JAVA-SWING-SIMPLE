@@ -21,27 +21,34 @@ public class LoginController  {
     private LoginView loginView;
     private UserModel userModel ;
     private LoginDaoCallBack loginDaoCallBack;
+    String email;
+    String password ;
     
-    public LoginController(LoginView loginView){
+    public LoginController(LoginView loginView,LoginDao loginDao){
         this.loginView = loginView;
+        loginDaoCallBack = loginDao;
         initController();
-        loginDaoCallBack = new LoginDao();
     } 
     public void initController(){
       loginView.getLoginBtn().addActionListener(e ->loginUser());   
      }  
     private void loginUser(){
-        
+      email =   loginView.getUserEmailTextField().getText().toString();
+      password = loginView.getUserPasswordTextFiled().getText().toString();
+      if(email.isEmpty() || password.isEmpty()){
+       JOptionPane.showMessageDialog(loginView, "Veuillez remplir tous les champs");
+      }else{
       userModel = new UserModel();
-      userModel.setEmail(loginView.getUserEmailTextField().getText().toString());
-      userModel.setPassword(loginView.getUserPasswordTextFiled().getText().toString());
+      userModel.setEmail(email);
+      userModel.setPassword(password);
      if( loginDaoCallBack.connexion(userModel)){
          loginView.onGetSucces();
+         System.out.println("onGetSucces");
      }else{
          loginView.onGetError("Error");
-     }
-     
-     
+         System.out.println("onGetError");
+     }   
+      }  
     }
     
     
