@@ -11,30 +11,33 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 import model.LoginModel;
 import model.UserModel;
+import view.Login;
+import view.SplashScreen;
 import view.LoginView;
+import view.LoginViewFrame;
 
 /**
  *
  * @author macbook
  */
 public class LoginController  {
-    private LoginView loginView;
+    private LoginViewFrame loginView;
     private UserModel userModel ;
     private LoginDaoCallBack loginDaoCallBack;
     String email;
     String password ;
     
-    public LoginController(LoginView loginView,LoginDao loginDao){
+    public LoginController(LoginViewFrame loginView,LoginDao loginDao){
         this.loginView = loginView;
         loginDaoCallBack = loginDao;
         initController();
     } 
     public void initController(){
-      loginView.getLoginBtn().addActionListener(e ->loginUser());   
+      loginView.getjButton1().addActionListener(e ->loginUser());   
      }  
     private void loginUser(){
-      email =   loginView.getUserEmailTextField().getText().toString();
-      password = loginView.getUserPasswordTextFiled().getText().toString();
+      email =   loginView.getjTextField2().getText().toString();
+      password = loginView.getjPasswordField2().getText().toString();
       if(email.isEmpty() || password.isEmpty()){
        JOptionPane.showMessageDialog(loginView, "Veuillez remplir tous les champs");
       }else{

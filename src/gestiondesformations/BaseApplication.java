@@ -17,6 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JWindow;
 import javax.swing.SwingConstants;
 import model.LoginModel;
+import view.Login;
+import view.SplashScreen;
 import view.LoginView;
 
 /**
@@ -28,16 +30,20 @@ public class BaseApplication {
     /**
      * @param args the command line arguments
      */
-    private static LoginView loginView= null;
+    private static SplashScreen loginView= null;
     private static LoginModel loginModel = null;
     private static LoginController loginController = null;
     public static void main(String[] args) throws MalformedURLException {
-           loginView = new LoginView("Login Page",600,600);
-             System.out.println("test 1");
-           loginModel = new LoginModel();
-           LoginDao loginDao = new LoginDao(); 
-           loginController = new LoginController(loginView,loginDao);
-           loginController.initController();
+//            Login login = new Login(); 
+//           login.setVisible(true);
+//           LoginDao loginDao = new LoginDao();
+//           LoginController  loginController = new LoginController(login,loginDao);
+           //loginController.initController();  
+             //System.out.println("test 1");
+          // loginModel = new LoginModel();
+         //  LoginDao loginDao = new LoginDao(); 
+          // loginController = new LoginController(loginView,loginDao);
+         //  loginController.initController();
 //              JWindow window = new JWindow();
 //        window.getContentPane().add(
 //                new JLabel("", new ImageIcon(new URL("http://docs.oracle.com/javase/tutorial/uiswing/examples/misc/SplashDemoProject/src/misc/images/splash.gif")), SwingConstants.CENTER)).setBackground(new Color(0, 0, 0, 0));
