@@ -1,17 +1,58 @@
 
 package view;
+import interfaces.SearchSessionCallBack;
+import java.awt.event.FocusEvent;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 /*
  * 
  * @author mackBook
  */
-public class AllSessions extends javax.swing.JPanel {
+public class AllSessions extends javax.swing.JPanel implements SearchSessionCallBack{
 
     /**
-     * Creates new form SearchEmployee
+     * Creates new form Sessions
      */
-    DefaultTableModel model;
+  
+
+   
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JTextField getSearchTextField() {
+        return searchTextField;
+    }
+
+    public void setSearchTextField(JTextField searchTextField) {
+        this.searchTextField = searchTextField;
+    }
+
+    public JTable getUpdateSessionsTable() {
+        return updateSessionsTable;
+    }
+
+    public void setUpdateSessionsTable(JTable updateSessionsTable) {
+        this.updateSessionsTable = updateSessionsTable;
+    }
     public AllSessions() {
         initComponents();
      //   PersonalHandling.Load();
@@ -33,8 +74,8 @@ public class AllSessions extends javax.swing.JPanel {
         updateSessionsTable = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(800, 642));
-        setPreferredSize(new java.awt.Dimension(800, 642));
+        setMaximumSize(new java.awt.Dimension(1000, 642));
+        setPreferredSize(new java.awt.Dimension(1000, 642));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 204));
@@ -44,17 +85,9 @@ public class AllSessions extends javax.swing.JPanel {
         searchTextField.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         searchTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         searchTextField.setText("Search");
-        searchTextField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                searchTextFieldFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                searchTextFieldFocusLost(evt);
-            }
-        });
-        searchTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                searchTextFieldKeyReleased(evt);
+        searchTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchTextFieldActionPerformed(evt);
             }
         });
 
@@ -92,9 +125,9 @@ public class AllSessions extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
-                    .addComponent(searchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 1321, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addContainerGap(46, Short.MAX_VALUE))
+                    .addComponent(searchTextField)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 920, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,19 +142,9 @@ public class AllSessions extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searchTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusGained
-       // if(searchTextField.getText().equals("Search"))
-         //   searchTextField.setText("");
-    }//GEN-LAST:event_searchTextFieldFocusGained
-
-    private void searchTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusLost
-       // if(searchTextField.getText().equals(""))
-          //  searchTextField.setText("Search");
-    }//GEN-LAST:event_searchTextFieldFocusLost
-
-    private void searchTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyReleased
-       // updateTable(PersonalHandling.search(searchTextField.getText()));
-    }//GEN-LAST:event_searchTextFieldKeyReleased
+    private void searchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTextFieldActionPerformed
 
   
 
@@ -131,4 +154,16 @@ public class AllSessions extends javax.swing.JPanel {
     private javax.swing.JTextField searchTextField;
     private javax.swing.JTable updateSessionsTable;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void searchTextFieldFocusGained(FocusEvent evt) {
+    }
+
+    @Override
+    public void searchTextFieldFocusLost(FocusEvent evt) {
+    }
+
+    @Override
+    public void searchTextFieldKeyReleased(KeyEvent evt) {
+    }
 }

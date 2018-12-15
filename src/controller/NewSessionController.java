@@ -16,6 +16,7 @@ public class NewSessionController {
     
     private NewSessionView newSessionView ;
     private NewSessionModel newSessionModel;
+   
     public NewSessionController(NewSessionView newSessionView,NewSessionModel newSessionModel) {
         this.newSessionModel = newSessionModel;
         this.newSessionView = newSessionView;

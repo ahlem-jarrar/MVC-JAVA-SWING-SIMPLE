@@ -5,7 +5,9 @@
  */
 package controller;
 
+import javax.swing.table.DefaultTableModel;
 import model.HomeModel;
+import view.AllSessions;
 import view.Home;
 import view.NewSessionView;
 
@@ -17,6 +19,7 @@ public class HomeController {
     private Home home;
     private HomeModel homeModel;
     private NewSessionView newSessionView;
+    private AllSessions allSessions;
 
     public HomeController(Home home,HomeModel homeModel) {
         this.home = home ;
@@ -24,6 +27,7 @@ public class HomeController {
     }
     public void initController(){
         home.getNewSessionBtn().addActionListener(e->changeConatinerNewSession());
+        home.getShowAllBtn().addActionListener(e-> changeConatinerAllSession());
         
     }
     private void changeConatinerNewSession(){
@@ -37,8 +41,22 @@ public class HomeController {
          //add New content
         home.getPnaelConatiner().add(newSessionView);
         home.getPnaelConatiner().repaint();
+        home.getPnaelConatiner().revalidate();  
+    }
+      private void changeConatinerAllSession(){
+        //remove all previous content
+        home.getPnaelConatiner().removeAll();
+        home.getPnaelConatiner().repaint();
         home.getPnaelConatiner().revalidate();
         
+        allSessions = new AllSessions();
+        DefaultTableModel defaultModel = new DefaultTableModel();
+        AllSessionController allSessionController = new AllSessionController(allSessions,defaultModel);
+        allSessionController.initController();
+         //add New content
+        home.getPnaelConatiner().add(allSessions);
+        home.getPnaelConatiner().repaint();
+        home.getPnaelConatiner().revalidate();  
     }
     
 }

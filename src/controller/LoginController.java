@@ -33,7 +33,7 @@ public class LoginController  {
         initController();
     } 
     public void initController(){
-      loginView.getjButton1().addActionListener(e ->loginUser());   
+      loginView.getjButton2().addActionListener(e ->loginUser());   
      }  
     private void loginUser(){
       email =   loginView.getjTextField2().getText().toString();
